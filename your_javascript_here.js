@@ -69,7 +69,29 @@ const nemesis = {
         }
       }
   }
+  function displayStats(){
+    let name   = hero.name
+    let health = hero.health
+    let weapon = hero.weapon.type
+    let damage = hero.weapon.damage
+    let nameSelector = document.querySelector(".name")
+    let healthSelector = document.querySelector(".health")
+    let weaponSelector = document.querySelector(".weapon")
+    let damageSelector = document.querySelector(".damage")
 
+    let nameNode =  document.createTextNode(`Your name:${name}`)
+    let healthNode =  document.createTextNode(`Health Status:${health}`)
+    let weaponNode =  document.createTextNode(`Weapon of choice:${weapon}`)
+    let damageNode =  document.createTextNode(`Strength:${damage}`)
+
+nameSelector.appendChild(nameNode);
+healthSelector.appendChild(healthNode);
+weaponSelector.appendChild(weaponNode);
+damageSelector.appendChild(damageNode);
+
+
+
+  }
 // UI
 
 document.getElementById("rest").addEventListener('click', function(){
@@ -85,3 +107,31 @@ document.getElementById("battle").addEventListener('click', function(){
   doBattle(hero, nemesis)
 
 })
+document.getElementById("equip").addEventListener('click', function(){
+  let num = window.prompt("your hero has 3 weapons, pick a number 0 || 1 || 2")
+  equipWeapon(hero, num)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+displayStats()

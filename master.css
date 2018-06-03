@@ -107,3 +107,17 @@ justify-content: center;
     /* background-color: rgba(161, 198, 208, 0.72); */
 
 }
+.parentVital{
+  display: flex;
+  justify-content: center;
+}
+.vitals{
+  position: relative;
+    width: auto;
+    height: auto;
+    background: rgb(66, 232, 113);
+    border-radius: 10%;
+    margin: 0px 5px 0px 5px;
+  padding: 20px;
+  text-align: center;
+}
