@@ -1,0 +1,82 @@
+*{
+
+  font-family: 'Roboto Mono', monospace;
+}
+body{
+  background-color: rgb(205, 205, 205);
+}
+
+.header{
+  text-align: center;
+}
+
+
+.outerBox{
+  border: 5px dotted white;
+  padding: 10px;
+  border-radius: 50%;
+  animation: rotate infinite 5s;
+  /* transition: 2s; */
+}
+.flexBox{
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+border: 5px dotted black;
+padding: 50px;
+border-radius: 50%;
+
+
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#image{
+position: relative;
+  width: 35vh;
+  height: 35vh;
+  background: rgb(66, 232, 113);
+  border-radius: 50%;
+  margin: 0px 5px 0px 5px;
+
+}
+#image:hover{
+  width: 37vh;
+  height: 37vh;
+  transition: 1s;
+  box-shadow: 0px 5px 5px rgba(92, 91, 91, 0.9);
+  animation: rotate 1 2s;
+
+}
+
+@media screen and (max-width: 1399px){
+  .flexBox{
+
+  flex-direction: column;
+  align-items: center;
+
+
+  }
+
+  #image{
+    margin: 10px 10px 0px 10px;
+    width: 20vh;
+    height: 20vh;
+
+  }
+  #image:hover{
+    width: 22vh;
+    height: 22vh;
+  }
+}
+
+img{
+  cursor: pointer;
+}
