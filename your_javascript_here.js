@@ -82,16 +82,37 @@ const nemesis = {
     let nameNode =  document.createTextNode(`Your name:${name}`)
     let healthNode =  document.createTextNode(`Health Status:${health}`)
     let weaponNode =  document.createTextNode(`Weapon of choice:${weapon}`)
-    let damageNode =  document.createTextNode(`Strength:${damage}`)
+    let damageNode =  document.createTextNode(`Strength of weapon:${damage}`)
 
 nameSelector.appendChild(nameNode);
 healthSelector.appendChild(healthNode);
 weaponSelector.appendChild(weaponNode);
 damageSelector.appendChild(damageNode);
 
+  }
+  function displayInventory(){
 
+
+    let vitalsSelector = document.querySelector(".inventory")
+
+    let inventory = hero.inventory
+
+    inventory.forEach(function(entry){
+      let weapon = hero.weapon.type
+      let weaponNode =  document.createTextNode(`Weapon name:${entry.type} `)
+      let weaponSelector = document.querySelector(".currentWeapon")
+          weaponSelector.appendChild(weaponNode);
+
+      let damage = hero.weapon.damage
+      let damageNode =  document.createTextNode(`Strength of weapon:${entry.damage} `)
+      let damageSelector = document.querySelector(".currentDamage")
+          damageSelector.appendChild(damageNode);
+
+          //vitalsSelector.appendChild(entry)
+    })
 
   }
+
 // UI
 
 document.getElementById("rest").addEventListener('click', function(){
@@ -135,3 +156,4 @@ document.getElementById("equip").addEventListener('click', function(){
 
 
 displayStats()
+displayInventory()
