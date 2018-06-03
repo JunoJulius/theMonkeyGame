@@ -98,6 +98,7 @@ damageSelector.appendChild(damageNode);
     let inventory = hero.inventory
 
     inventory.forEach(function(entry){
+
       let weapon = hero.weapon.type
       let weaponNode =  document.createTextNode(`Weapon name:${entry.type} `)
       let weaponSelector = document.querySelector(".currentWeapon")
@@ -108,29 +109,37 @@ damageSelector.appendChild(damageNode);
       let damageSelector = document.querySelector(".currentDamage")
           damageSelector.appendChild(damageNode);
 
-          //vitalsSelector.appendChild(entry)
+
     })
 
+  }
+  function updateStats(){
+    displayStats()
+    displayInventory()
   }
 
 // UI
 
 document.getElementById("rest").addEventListener('click', function(){
   rest(hero);
+  updateStats()
 })
 
 document.getElementById("item").addEventListener('click', function(){
 let weaponize = hero.weapon
 pickUpItem(hero, weaponize)
+updateStats()
 })
 
 document.getElementById("battle").addEventListener('click', function(){
   doBattle(hero, nemesis)
+  updateStats()
 
 })
 document.getElementById("equip").addEventListener('click', function(){
   let num = window.prompt("your hero has 3 weapons, pick a number 0 || 1 || 2")
   equipWeapon(hero, num)
+  updateStats()
 })
 
 
