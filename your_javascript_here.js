@@ -4,7 +4,7 @@ const hero = {
   heroic: true,
   inventory: [{type: "Fermented banana", damage: 10 },
               {type: "Prepared Statement", damage: 5}],
-  health: 10,
+  health: 5,
   weapon: {type: "Laptop", damage: 8,
   }
 }
@@ -24,24 +24,31 @@ const nemesis = {
 
   function rest(creature){
     creature.health = 10;
+    updateStats()
     console.log(creature.name + "'s Vitals are restored");
   return creature;
   }
 
   function pickUpItem(creature, item){
     creature.inventory.push(item);
+    updateStats()
+
     console.log(creature.inventory);
       return creature;
   }
 
   function dealDamage(attacker, defender){
     defender.health -= attacker.weapon.damage
+    updateStats()
+
       return defender;
   }
 
   function equipWeapon(creature, index) {
        creature.weapon = creature.inventory[index];
        creature.inventory.splice(index, 1)
+       updateStats()
+
         return creature;
   }
 
@@ -55,9 +62,11 @@ const nemesis = {
           dealDamage(heroicCreature, creature)
 
 
+
           if (creature.health > 0) {
 
             dealDamage(creature, heroicCreature)
+
 
           }
         }
@@ -84,16 +93,23 @@ const nemesis = {
     let weaponNode =  document.createTextNode(`Weapon of choice:${weapon}`)
     let damageNode =  document.createTextNode(`Strength of weapon:${damage}`)
 
+nameSelector.innerHTML = ''
+healthSelector.innerHTML = ''
+weaponSelector.innerHTML = ''
+damageSelector.innerHTML = ''
+
 nameSelector.appendChild(nameNode);
+
 healthSelector.appendChild(healthNode);
 weaponSelector.appendChild(weaponNode);
 damageSelector.appendChild(damageNode);
+console.log()
 
   }
   function displayInventory(){
 
 
-    let vitalsSelector = document.querySelector(".inventory")
+    // let vitalsSelector = document.querySelector(".inventory")
 
     let inventory = hero.inventory
 
@@ -102,11 +118,14 @@ damageSelector.appendChild(damageNode);
       let weapon = hero.weapon.type
       let weaponNode =  document.createTextNode(`Weapon name:${entry.type} `)
       let weaponSelector = document.querySelector(".currentWeapon")
+
+          weaponSelector.innerHTML = ''
           weaponSelector.appendChild(weaponNode);
 
       let damage = hero.weapon.damage
       let damageNode =  document.createTextNode(`Strength of weapon:${entry.damage} `)
       let damageSelector = document.querySelector(".currentDamage")
+          damageSelector.innerHTML = ''
           damageSelector.appendChild(damageNode);
 
 
@@ -122,6 +141,7 @@ damageSelector.appendChild(damageNode);
 
 document.getElementById("rest").addEventListener('click', function(){
   rest(hero);
+
   updateStats()
 })
 
